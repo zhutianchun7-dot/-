@@ -1,0 +1,288 @@
+[
+    {
+        "id": 1,
+        "name": "临港产业佳园",
+        "position": [
+            121.825212,
+            30.897052
+        ],
+        "address": "上海市浦东新区泥城路149弄",
+        "manager": "苏云宏、金玉明",
+        "rooms": 5,
+        "transformers": 6,
+        "frequency": "每天"
+    },
+    {
+        "id": 2,
+        "name": "智联·临港国际物流园",
+        "position": [
+            121.842498,
+            30.906791
+        ],
+        "address": "上海市浦东新区秋祥路669号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 3,
+        "transformers": 4,
+        "frequency": "每天"
+    },
+    {
+        "id": 3,
+        "name": "旺洋·临港国际保税产业园",
+        "position": [
+            121.900545,
+            30.86077
+        ],
+        "address": "上海市浦东新区海旺路55号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 4,
+        "name": "临港产业服务中心",
+        "position": [
+            121.879289,
+            30.878855
+        ],
+        "address": "上海市浦东新区同汇路168号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 5,
+        "name": "临港新兴产业园-D区",
+        "position": [
+            121.842781,
+            30.874373
+        ],
+        "address": "上海市浦东新区飞渡路55号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 1,
+        "frequency": "每天"
+    },
+    {
+        "id": 6,
+        "name": "浩洋·临港国际保税产业园",
+        "position": [
+            121.887413,
+            30.858078
+        ],
+        "address": "上海市浦东新区业盛路333号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 7,
+        "name": "临港物贸特高压厂房",
+        "position": [
+            121.837435,
+            30.848908
+        ],
+        "address": "上海市浦东新区层林路66号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 5,
+        "transformers": 7,
+        "frequency": "12次/月"
+    },
+    {
+        "id": 8,
+        "name": "临港现代物流",
+        "position": [
+            121.8374,
+            30.852274
+        ],
+        "address": "nan",
+        "manager": "苏云宏、金玉明",
+        "rooms": 7,
+        "transformers": 7,
+        "frequency": "12次/月"
+    },
+    {
+        "id": 9,
+        "name": "临港现代物流（海关）",
+        "position": [
+            121.835628,
+            30.85216
+        ],
+        "address": "nan",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 10,
+        "name": "缆普电缆制造（上海）有限公司",
+        "position": [
+            121.786467,
+            30.859778
+        ],
+        "address": "上海市浦东新区沧海路2828号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "2次/月"
+    },
+    {
+        "id": 11,
+        "name": "上海航空发动机复合材料有限责任公司",
+        "position": [
+            121.836624,
+            30.882548
+        ],
+        "address": "上海市浦东新区奔腾路301号",
+        "manager": "苏云宏、金玉明",
+        "rooms": 2,
+        "transformers": 4,
+        "frequency": "2次/月"
+    },
+    {
+        "id": 12,
+        "name": "玛瑙园",
+        "position": [
+            121.792797,
+            30.865367
+        ],
+        "address": "nan",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 13,
+        "name": "临港智造·香樟园",
+        "position": [
+            121.757639,
+            30.882287
+        ],
+        "address": "上海市浦东新区正琅路19号",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 3,
+        "transformers": 5,
+        "frequency": "每天"
+    },
+    {
+        "id": 14,
+        "name": "临港检验检测科技产业园",
+        "position": [
+            121.817136,
+            30.881783
+        ],
+        "address": "上海市浦东新区新元南路999弄",
+        "manager": "苏云宏、金玉明",
+        "rooms": 3,
+        "transformers": 12,
+        "frequency": "2次/月"
+    },
+    {
+        "id": 15,
+        "name": "中石油（上海）新材料研究院",
+        "position": [
+            121.92534,
+            30.881144
+        ],
+        "address": "nan",
+        "manager": "苏云宏、金玉明",
+        "rooms": 1,
+        "transformers": 4,
+        "frequency": "4次/月"
+    },
+    {
+        "id": 16,
+        "name": "临港检验检测科技产业园",
+        "position": [
+            121.81991,
+            30.881706
+        ],
+        "address": "上海市浦东新区新元南路999弄",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 3,
+        "transformers": 12,
+        "frequency": "2次/月"
+    },
+    {
+        "id": 17,
+        "name": "蓝湾天地",
+        "position": [
+            121.741148,
+            30.877152
+        ],
+        "address": "上海市奉贤区云樱路268弄",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 18,
+        "name": "临港智造·玉兰园",
+        "position": [
+            121.749612,
+            30.877478
+        ],
+        "address": "上海市奉贤区正博路1881号",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 7,
+        "transformers": 9,
+        "frequency": "每天"
+    },
+    {
+        "id": 19,
+        "name": "临港智造园·七期",
+        "position": [
+            121.763177,
+            30.878168
+        ],
+        "address": "上海市奉贤区平达路308号",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 3,
+        "transformers": 4,
+        "frequency": "每天"
+    },
+    {
+        "id": 20,
+        "name": "临港智造园·八期",
+        "position": [
+            121.768724,
+            30.874153
+        ],
+        "address": "上海市奉贤区正嘉路1215号",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 3,
+        "transformers": 4,
+        "frequency": "每天"
+    },
+    {
+        "id": 21,
+        "name": "临港奉贤体育中心",
+        "position": [
+            121.748078,
+            30.88192
+        ],
+        "address": "上海市奉贤区正旭路1058号",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 1,
+        "transformers": 2,
+        "frequency": "每天"
+    },
+    {
+        "id": 22,
+        "name": "临港智造·青铜园",
+        "position": [
+            121.74382,
+            30.883224
+        ],
+        "address": "nan",
+        "manager": "陈正冬、马吉勇",
+        "rooms": 7,
+        "transformers": 9,
+        "frequency": "每天"
+    }
+]
