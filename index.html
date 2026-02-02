@@ -178,7 +178,7 @@
         const managerColors = ['#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#00BCD4', '#009688', '#FF9800', '#795548'];
         let managerColorMap = {};
 
-        const map = new AMap.Map('container', { zoom: 12, center: [121.9133, 30.8882], mapStyle: 'amap://styles/normal' });
+        const map = new AMap.Map('container', { zoom: 12, center: [121.831779,30.923848], mapStyle: 'amap://styles/normal' });
 
         fetch('data.json').then(res => res.json()).then(data => {
             rawData = data;
@@ -337,4 +337,5 @@ marker = new AMap.Marker({
     </script>
 </body>
 </html>
+
 
