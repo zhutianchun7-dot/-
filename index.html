@@ -2,167 +2,158 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>临港巡检管理智慧地图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>临港巡检管理智慧看板</title>
     <style>
-        /* 全局基础样式 */
-        body, html { 
-            margin: 0; padding: 0; width: 100%; height: 100%; 
-            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif; 
-        }
+        /* 基础样式 */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: "Microsoft YaHei", sans-serif; }
         #container { width: 100%; height: 100vh; }
-    
-        /* 悬浮控制面板 */
+
+        /* 左侧面板 */
         .control-panel {
-            position: absolute; 
-            top: 20px; 
-            left: 20px; 
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.96); 
-            padding: 18px;
-            border-radius: 12px; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            width: 260px; 
-            max-height: 85vh; 
-            overflow-y: auto;
-            transition: all 0.3s ease;
+            position: absolute; top: 15px; left: 15px; z-index: 1000;
+            background: rgba(255, 255, 255, 0.96); padding: 15px;
+            border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            width: 240px; max-height: 85vh; overflow-y: auto;
         }
-    
-        /* 标题样式 */
-        .control-panel h2 { 
-            margin: 0 0 15px 0; 
-            font-size: 18px; 
-            color: #333; 
-            border-left: 5px solid #1e88e5; 
-            padding-left: 10px; 
-        }
-    
-        /* 手机端适配 (屏幕宽度小于 500px) */
-        @media (max-width: 500px) {
-            .control-panel {
-                width: 180px;      /* 手机端收窄，避免遮挡地图中心 */
-                top: 10px; 
-                left: 10px;
-                padding: 12px;
-            }
-            .control-panel h2 { font-size: 15px; }
-            .mode-btn { padding: 6px 2px; font-size: 11px; }
-            .filter-group label { font-size: 11px; }
-            #projectSearch, select { padding: 6px; font-size: 12px; }
-        }
-    
-        /* 分组容器 */
-        .filter-group { 
-            margin-bottom: 12px; 
-            padding: 10px; 
-            background: #f8f9fa; 
-            border-radius: 8px; 
-            border: 1px solid #eee;
-        }
-        .filter-group label { 
-            display: block; 
-            margin-bottom: 8px; 
-            font-weight: bold; 
-            font-size: 13px; 
-            color: #555; 
-        }
-    
-        /* 输入框与选择框 */
-        #projectSearch, select { 
-            width: 100%; 
-            padding: 10px; 
-            border: 1px solid #ccc; 
-            border-radius: 6px; 
-            box-sizing: border-box; 
-            outline: none; 
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-        #projectSearch:focus { border-color: #1e88e5; }
-    
-        /* 切换按钮 */
-        .mode-switch { display: flex; gap: 6px; margin-bottom: 5px; }
-        .mode-btn { 
-            flex: 1; 
-            padding: 8px 0; 
-            font-size: 12px; 
-            cursor: pointer;
-            border: 1.5px solid #1e88e5; 
-            background: white; 
-            color: #1e88e5; 
-            border-radius: 6px;
-            font-weight: bold;
-        }
+        .filter-group { margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 8px; }
+        .filter-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px; color: #444; }
+        #projectSearch, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; outline: none; }
+
+        /* 模式切换按钮 */
+        .mode-switch { display: flex; gap: 5px; margin-bottom: 8px; }
+        .mode-btn { flex: 1; padding: 8px 0; font-size: 12px; cursor: pointer; border: 1.5px solid #1e88e5; background: white; color: #1e88e5; border-radius: 6px; font-weight: bold; }
         .mode-btn.active { background: #1e88e5; color: white; }
-    
-        /* 图例部分 */
-        .legend { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
-        .legend-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 12px; color: #444; }
-        
-        /* 频次模式圆点图例 */
-        .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 12px; border: 1px solid rgba(0,0,0,0.1); }
-        
-        /* 人员模式坐标点图例 */
-        .pin-legend {
-            position: relative; 
-            width: 14px; 
-            height: 14px;
-            background-color: #666; 
-            border-radius: 50% 50% 50% 0; 
-            transform: rotate(-45deg); 
-            margin-right: 15px; 
-            display: inline-block;
-            border: 1px solid rgba(255,255,255,0.8);
+
+        /* 图例 */
+        .legend { margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 12px; color: #333; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 10px; }
+        .pin-legend { width: 12px; height: 12px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); margin-right: 12px; display: inline-block; }
+
+        /* 汇总看板弹窗 */
+        #statsModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; }
+        .modal-content {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; width: 95%; max-width: 850px; max-height: 85vh;
+            border-radius: 15px; padding: 20px; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-    
-        /* 信息窗体自定义样式 (锁定不改) */
-        .info-window { min-width: 200px; padding: 5px; }
-        .info-window h3 { 
-            margin: 0 0 10px 0; 
-            color: #1e88e5; 
-            border-bottom: 2px solid #e3f2fd; 
-            padding-bottom: 8px; 
-            font-size: 16px;
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #1e88e5; padding-bottom: 15px; margin-bottom: 15px; }
+        .stats-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .stats-table th, .stats-table td { border-bottom: 1px solid #eee; padding: 12px; text-align: left; }
+        .stats-table th { background: #f4f7f9; position: sticky; top: 0; z-index: 10; }
+        .summary-bar { background: #e3f2fd; padding: 15px; margin-top: 15px; border-radius: 10px; font-weight: bold; display: flex; justify-content: space-around; color: #1565c0; }
+
+        /* 悬浮按钮 */
+        .open-stats-btn {
+            position: absolute; bottom: 30px; right: 20px; z-index: 1000;
+            background: #1e88e5; color: white; border: none; padding: 12px 25px;
+            border-radius: 30px; cursor: pointer; font-size: 15px; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(30,136,229,0.4);
         }
-        .info-window p { margin: 8px 0; font-size: 13px; color: #333; line-height: 1.5; }
-        .tag { 
-            background: #e3f2fd; 
-            color: #1976d2; 
-            padding: 2px 8px; 
-            border-radius: 4px; 
-            font-size: 12px; 
-            font-weight: bold;
-            margin-left: 5px;
+
+        /* 手机适配 */
+        @media (max-width: 500px) {
+            .control-panel { width: 160px; padding: 10px; top: 10px; left: 10px; }
+            .modal-content { width: 98%; padding: 12px; }
+            .summary-bar { flex-direction: column; gap: 5px; font-size: 12px; }
+            .open-stats-btn { bottom: 20px; right: 10px; padding: 10px 18px; font-size: 13px; }
         }
+        /* 优化后的信息窗体样式 */
+.info-window {
+    padding: 5px;
+    min-width: 220px;
+}
+.info-window h3 {
+    margin: 0 0 12px 0;
+    color: #1e88e5;
+    font-size: 16px;
+    border-bottom: 2px solid #e3f2fd;
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px; /* 稍微缩小间距，防止弹窗过高 */
+    font-size: 13px;
+}
+.info-label {
+    color: #666;
+}
+.info-value {
+    color: #333;
+    font-weight: bold;
+}
+.tag-blue {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+.address-box {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #eee;
+}
+.address-text {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+    line-height: 1.4;
+}
     </style>
 </head>
 <body>
 
     <div class="control-panel">
-        <h2>巡检智慧看板</h2>
-        
+        <h2 style="margin:0 0 10px 0; font-size:18px; color:#1e88e5;">巡检管理看板</h2>
         <div class="filter-group">
             <label>搜索项目：</label>
             <input type="text" id="projectSearch" placeholder="输入名称并回车..." onkeypress="handleSearch(event)">
         </div>
-
         <div class="filter-group">
             <label>展示模式：</label>
             <div class="mode-switch">
-                <button id="btn-freq" class="mode-btn active" onclick="switchMode('frequency')">按频次(圆点)</button>
-                <button id="btn-man" class="mode-btn" onclick="switchMode('manager')">按人员(坐标点)</button>
+                <button id="btn-freq" class="mode-btn active" onclick="switchMode('frequency')">频次(点)</button>
+                <button id="btn-man" class="mode-btn" onclick="switchMode('manager')">人员(坐标)</button>
             </div>
         </div>
-
         <div class="filter-group">
-            <label>人员筛选：</label>
+            <label>地图筛选 (人员)：</label>
             <select id="managerSelect" onchange="updateDisplay()">
                 <option value="全部">全部人员</option>
             </select>
         </div>
+        <div id="legendBox" class="legend"><div id="legendContent"></div></div>
+    </div>
 
-        <div id="legendBox" class="legend">
-            <label style="font-size: 12px; color: #999; margin-bottom: 8px; display: block;">图例说明：</label>
-            <div id="legendContent"></div>
+    <button class="open-stats-btn" onclick="toggleModal(true)">📊 数据汇总看板</button>
+
+    <div id="statsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="margin:0">巡检统计</h2>
+                <span style="cursor:pointer; font-size:28px; color:#aaa;" onclick="toggleModal(false)">&times;</span>
+            </div>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <select id="modalManagerFilter" onchange="renderTable()"><option value="全部">所有人员</option></select>
+                <select id="modalFreqFilter" onchange="renderTable()">
+                    <option value="全部">所有频次</option>
+                    <option value="2次/月">2次/月</option>
+                    <option value="4次/月">4次/月</option>
+                    <option value="12次/月">12次/月</option>
+                    <option value="每天">每天</option>
+                </select>
+            </div>
+            <table class="stats-table">
+                <thead><tr><th>客户名称</th><th>巡检人</th><th>频次</th><th>配电间</th><th>变压器</th></tr></thead>
+                <tbody id="statsTableBody"></tbody>
+            </table>
+            <div class="summary-bar" id="tableSummary"></div>
         </div>
     </div>
 
@@ -174,18 +165,20 @@
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=5549cbcc4a06aaa64f89f54089c4ba12"></script>
 
     <script>
-        let currentMode = 'frequency'; 
-        let rawData = [];
-        let markers = [];
+        let currentMode = 'frequency', rawData = [], markers = [];
         let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -15) });
 
+        // 最终确定的配色方案
         const freqColors = { 
-            '2次/月': '#1e88e5', '4次/月': '#43a047', '12次/月': '#fb8c00', '每天': '#e53935' 
+            '2次/月': '#1e88e5', // 蓝色
+            '4次/月': '#005b96', // 深蓝色 (比蓝深，比红橙冷)
+            '12次/月': '#fb8c00', // 橙色
+            '每天': '#e53935'    // 红色
         };
         const managerColors = ['#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#00BCD4', '#009688', '#FF9800', '#795548'];
         let managerColorMap = {};
 
-        const map = new AMap.Map('container', { zoom: 12, center: [121.9133, 30.8882] });
+        const map = new AMap.Map('container', { zoom: 12, center: [121.9133, 30.8882], mapStyle: 'amap://styles/normal' });
 
         fetch('data.json').then(res => res.json()).then(data => {
             rawData = data;
@@ -196,39 +189,59 @@
         function initFilters() {
             const managers = [...new Set(rawData.map(d => d.manager))].filter(m => m && m !== 'nan');
             const select = document.getElementById('managerSelect');
+            const modalSelect = document.getElementById('modalManagerFilter');
             managers.forEach((m, i) => {
                 managerColorMap[m] = managerColors[i % managerColors.length];
                 select.add(new Option(m, m));
+                modalSelect.add(new Option(m, m));
             });
         }
 
         function handleSearch(e) {
             if (e.key === 'Enter') {
                 const kw = e.target.value.trim().toLowerCase();
-                if (!kw) return;
                 const target = rawData.find(d => d.name.toLowerCase().includes(kw));
-                if (target) {
-                    map.setZoomAndCenter(15, target.position);
-                    openPopup(target);
-                } else {
-                    alert("未搜索到匹配的项目");
-                }
+                if (target) { map.setZoomAndCenter(15, target.position); openPopup(target); }
             }
         }
 
         function openPopup(item) {
-            const content = `
-                <div class="info-window">
-                    <h3>${item.name}</h3>
-                    <p><b>巡检人员</b> <span class="tag">${item.manager}</span></p>
-                    <p><b>巡检频次</b> <span>${item.frequency}</span></p>
-                    <p><b>配电间数</b> <span>${item.rooms} 个</span></p>
-                    <p><b>变压器数</b> <span>${item.transformers} 台</span></p>
-                    <p><b>详细地址</b> <br><span style="color: #888;">${item.address}</span></p>
-                </div>`;
-            infoWindow.setContent(content);
-            infoWindow.open(map, item.position);
-        }
+    // 自动获取该频次对应的颜色，如果没有匹配到则默认黑色
+    const dynamicColor = freqColors[item.frequency] || '#333';
+
+    const content = `
+        <div class="info-window">
+            <h3>${item.name}</h3>
+            
+            <div class="info-item">
+                <span class="info-label">巡检人员</span>
+                <span class="tag-blue">${item.manager}</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-label">巡检频次</span>
+                <span class="info-value" style="color: ${dynamicColor};">${item.frequency}</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-label">配电间数量</span>
+                <span class="info-value"><span style="color:#1e88e5;">${item.rooms}</span> 间</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">变压器数量</span>
+                <span class="info-value"><span style="color:#1e88e5;">${item.transformers}</span> 台</span>
+            </div>
+            
+            <div class="address-box">
+                <span class="info-label" style="font-size:11px;">📍 详细地址</span>
+                <span class="address-text">${item.address || '暂无详细地址'}</span>
+            </div>
+        </div>`;
+        
+    infoWindow.setContent(content);
+    infoWindow.open(map, item.position);
+}
 
         function switchMode(mode) {
             currentMode = mode;
@@ -244,39 +257,82 @@
             const legendBox = document.getElementById('legendContent');
             legendBox.innerHTML = '';
 
-            // 更新图例
             const currentMap = (currentMode === 'frequency' ? freqColors : managerColorMap);
             Object.keys(currentMap).forEach(key => {
                 const shape = (currentMode === 'frequency' ? 'dot' : 'pin-legend');
-                const colorKey = (currentMode === 'frequency' ? 'background' : 'background-color');
-                legendBox.innerHTML += `<div class="legend-item"><div class="${shape}" style="${colorKey}:${currentMap[key]}"></div>${key}</div>`;
+                legendBox.innerHTML += `<div class="legend-item"><div class="${shape}" style="background-color:${currentMap[key]}"></div>${key}</div>`;
             });
 
-            // 绘制点位
             rawData.forEach(item => {
                 if (selectedMan !== '全部' && item.manager !== selectedMan) return;
-
                 let marker;
                 if (currentMode === 'frequency') {
                     marker = new AMap.CircleMarker({
                         center: item.position, radius: 8,
-                        fillColor: freqColors[item.frequency] ,
+                        fillColor: freqColors[item.frequency] || '#999',
                         strokeColor: 'white', strokeWeight: 2, fillOpacity: 0.9, map: map
                     });
                 } else {
-                    const color = managerColorMap[item.manager] || '#666';
-                    marker = new AMap.Marker({
-                        position: item.position, offset: new AMap.Pixel(-16, -32),
-                        content: `<div style="position:relative;">
-                                    <div style="width:24px;height:24px;background-color:${color};border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid white;box-shadow:0 2px 4px rgba(0,0,0,0.3);"></div>
-                                    <div style="position:absolute;width:8px;height:8px;background:white;border-radius:50%;top:8px;left:8px;"></div>
-                                  </div>`,
-                        map: map
-                    });
+// ... 在 updateDisplay 函数的人员模式分支中 ...
+const color = managerColorMap[item.manager] || '#666';
+
+// 缩小后的尺寸定义：18px
+const size = 18; 
+const innerSize = 6; // 中心白点尺寸
+
+marker = new AMap.Marker({
+    position: item.position,
+    // 偏移量也需要同步调整：水平偏移为宽度的一半，垂直偏移为高度
+    offset: new AMap.Pixel(-size/2, -size), 
+    content: `
+        <div style="position:relative;">
+            <div style="
+                width:${size}px; 
+                height:${size}px; 
+                background-color:${color}; 
+                border-radius:50% 50% 50% 0; 
+                transform:rotate(-45deg); 
+                border:1px solid white; 
+                box-shadow:0 2px 4px rgba(0,0,0,0.2);">
+            </div>
+            <div style="
+                position:absolute; 
+                width:${innerSize}px; 
+                height:${innerSize}px; 
+                background:white; 
+                border-radius:50%; 
+                top:${(size - innerSize)/2}px; 
+                left:${(size - innerSize)/2}px;">
+            </div>
+        </div>`,
+    map: map
+});
+                    
                 }
                 marker.on('click', () => openPopup(item));
                 markers.push(marker);
             });
+        }
+
+        // 看板逻辑
+        function toggleModal(show) {
+            document.getElementById('statsModal').style.display = show ? 'block' : 'none';
+            if(show) renderTable();
+        }
+
+        function renderTable() {
+            const manF = document.getElementById('modalManagerFilter').value;
+            const freqF = document.getElementById('modalFreqFilter').value;
+            const tbody = document.getElementById('statsTableBody');
+            let filtered = rawData.filter(d => (manF === '全部' || d.manager === manF) && (freqF === '全部' || d.frequency === freqF));
+            
+            let html = '', tRooms = 0, tTrans = 0;
+            filtered.forEach(item => {
+                tRooms += (parseInt(item.rooms) || 0); tTrans += (parseInt(item.transformers) || 0);
+                html += `<tr><td>${item.name}</td><td>${item.manager}</td><td>${item.frequency}</td><td>${item.rooms}</td><td>${item.transformers}</td></tr>`;
+            });
+            tbody.innerHTML = html;
+            document.getElementById('tableSummary').innerHTML = `<span>总项目: ${filtered.length}</span><span>总配电间: ${tRooms}</span><span>总变压器: ${tTrans}</span>`;
         }
     </script>
 </body>
